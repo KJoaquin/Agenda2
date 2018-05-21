@@ -1,0 +1,5 @@
+<root>
+    <item name='com.google.android.gms.internal.firebase_auth.zzu'>
+        <annotation name='java.lang.Deprecated' />
+    </item>
+</root>

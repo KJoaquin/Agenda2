@@ -1,0 +1,141 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Mach_l">
+
+    <TextView
+        android:id="@+id/text"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="70dp"
+        android:fontFamily="@font/audiowide"
+        android:text="@string/text1"
+        android:textAllCaps="false"
+        android:textColor="@color/colorBlanco"
+        android:textSize="36sp"
+        android:textStyle="italic" />
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/usuario"
+        android:layout_below="@+id/text"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColorHint="@color/colorBlanco"
+        android:layout_marginTop="60dp">
+        <EditText
+            android:id="@+id/us"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/usuario"
+            android:textColor="@color/colorBlanco"
+            android:inputType="textEmailAddress"/>
+    </android.support.design.widget.TextInputLayout>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/password"
+        android:layout_below="@+id/usuario"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:paddingLeft="20dp"
+        android:paddingRight="20dp"
+        android:textColorHint="@color/colorBlanco"
+        android:layout_marginTop="40dp">
+        <in.anshul.libray.PasswordEditText
+            android:id="@+id/pas"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:hint="@string/password"
+            android:textColor="@color/colorBlanco"
+            app:show_drawable="@drawable/show_password"
+            app:password_visible="false"
+            app:hide_drawable="@drawable/hide_password"
+            />
+    </android.support.design.widget.TextInputLayout>
+
+    <Button
+        android:id="@+id/entrar"
+        style="?android:textAppearanceSmall"
+        android:layout_width="300sp"
+        android:layout_height="50dp"
+        android:layout_below="@+id/password"
+        android:layout_marginTop="20dp"
+        android:layout_centerHorizontal="true"
+        android:backgroundTint="@android:color/white"
+        android:onClick="llista"
+        android:text="@string/iniciar_sesi_n"
+        android:textColor="@color/colorPrimary"
+        android:textStyle="bold" />
+
+    <LinearLayout
+        android:id="@+id/re_contraseña"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/entrar"
+        android:layout_centerHorizontal="true"
+        android:padding="5dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView7"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/texto_re"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/recuperar"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:text="@string/recuperar"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+    <View
+        android:layout_width="match_parent"
+        android:layout_height="1dp"
+        android:layout_alignParentBottom="true"
+        android:layout_alignParentEnd="true"
+        android:layout_marginBottom="50dp"
+        android:background="@color/colorBlanco" />
+
+    <LinearLayout
+        android:id="@+id/registro"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentBottom="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="10dp"
+        android:padding="10dp"
+        android:orientation="horizontal">
+
+        <TextView
+            android:id="@+id/textView6"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/no_tienes_una_cuenta"
+            android:textSize="12sp" />
+
+        <TextView
+            android:id="@+id/txt_registro"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:paddingLeft="5dp"
+            android:text="@string/registrate"
+            android:textAppearance="@style/TextAppearance.AppCompat.Body2"
+            android:textSize="12sp"
+            android:textStyle="bold" />
+
+    </LinearLayout>
+
+</RelativeLayout>
