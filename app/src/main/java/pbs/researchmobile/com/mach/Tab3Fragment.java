@@ -113,7 +113,7 @@ public class Tab3Fragment extends Fragment implements SwipeRefreshLayout.OnRefre
                     }
                 });
             }
-        }, 3500);
+        }, 1500);
     }
 
 }

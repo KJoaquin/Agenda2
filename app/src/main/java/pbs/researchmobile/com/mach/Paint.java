@@ -1,5 +1,8 @@
 package pbs.researchmobile.com.mach;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
+import android.content.Context;
 import android.content.DialogInterface;
 import android.content.Intent;
 import android.support.design.widget.TabLayout;
@@ -19,6 +22,7 @@ import android.widget.Toast;
 import com.google.firebase.auth.FirebaseAuth;
 
 import pbs.researchmobile.com.mach.record.AdminSQLiteOpenHelper;
+import pbs.researchmobile.com.mach.record.MyAlarmReceiver;
 import pbs.researchmobile.com.mach.record.vars;
 
 public class Paint extends AppCompatActivity {
@@ -38,7 +42,7 @@ public class Paint extends AppCompatActivity {
         mSectionsPageAdapter = new SectionsPageAdapter(getSupportFragmentManager());
         mViewPager = (ViewPager) findViewById(R.id.view_pager_user_listing);
         setupViewPager(mViewPager);
-
+        servicio();
         session = new Session(this);
         if(!session.loggedin()){
             logout();
@@ -119,4 +123,12 @@ public class Paint extends AppCompatActivity {
 
     }
 
+    public void servicio() {
+        Intent intent = new Intent(getApplicationContext(), MyAlarmReceiver.class);
+        final PendingIntent pIntent = PendingIntent.getBroadcast(getApplicationContext(), MyAlarmReceiver.REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        long firstMillis = System.currentTimeMillis(); //first run of alarm is immediate // aranca la palicacion
+        int intervalMillis = 100; //3 segundos
+        AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis, intervalMillis, pIntent);
+    }
 }

@@ -1,6 +1,9 @@
 package pbs.researchmobile.com.mach;
 
+import android.app.AlarmManager;
+import android.app.PendingIntent;
 import android.app.ProgressDialog;
+import android.content.Context;
 import android.content.Intent;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -22,6 +25,7 @@ import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
 import in.anshul.libray.PasswordEditText;
+import pbs.researchmobile.com.mach.record.MyAlarmReceiver;
 
 public class Mach_l extends AppCompatActivity implements View.OnClickListener{
 
@@ -41,7 +45,7 @@ public class Mach_l extends AppCompatActivity implements View.OnClickListener{
         session = new Session(this);
         mAuth = FirebaseAuth.getInstance();
         progress = new ProgressDialog(this);
-
+        servicio();
         etUsername = (EditText)findViewById(R.id.us);
         etPassword = (PasswordEditText)findViewById(R.id.pas);
 
@@ -68,7 +72,6 @@ public class Mach_l extends AppCompatActivity implements View.OnClickListener{
             startActivity(new Intent(Mach_l.this,Paint.class));
             finish();
         }
-
     }
 
     private void iniciarSecion() {
@@ -131,4 +134,13 @@ public class Mach_l extends AppCompatActivity implements View.OnClickListener{
         this.finish();
     }
 
+
+    public void servicio() {
+        Intent intent = new Intent(getApplicationContext(), MyAlarmReceiver.class);
+        final PendingIntent pIntent = PendingIntent.getBroadcast(getApplicationContext(), MyAlarmReceiver.REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
+        long firstMillis = System.currentTimeMillis(); //first run of alarm is immediate // aranca la palicacion
+        int intervalMillis = 100; //3 segundos
+        AlarmManager alarm = (AlarmManager) this.getSystemService(Context.ALARM_SERVICE);
+        alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis, intervalMillis, pIntent);
+    }
 }
