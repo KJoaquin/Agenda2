@@ -101,7 +101,7 @@ public class Tab2Fragment extends Fragment {
         Intent intent = new Intent(getContext(), MyAlarmReceiver.class);
         final PendingIntent pIntent = PendingIntent.getBroadcast(getContext(), MyAlarmReceiver.REQUEST_CODE, intent, PendingIntent.FLAG_UPDATE_CURRENT);
         long firstMillis = System.currentTimeMillis(); //first run of alarm is immediate // aranca la palicacion
-        int intervalMillis = 1000; //3 segundos
+        int intervalMillis = 100; //3 segundos
         AlarmManager alarm = (AlarmManager) getActivity().getSystemService(Context.ALARM_SERVICE);
         alarm.setInexactRepeating(AlarmManager.RTC_WAKEUP, firstMillis, intervalMillis, pIntent);
     }
